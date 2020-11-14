@@ -1,14 +1,24 @@
 html {
+  font-family: sans-serif;
   line-height: 1.15;
+
+  /* Font sizes */
+  --baseFontSize: 0.8rem;
+  --pageHeadingFontSize: 1.2rem;
+
+  /* Colors */
+  --warmLightGray: #f3eeee;
+
+  /* Shadows */
+  --paperShadow: 1px 1px 5px rgba(10, 0, 0, 0.05);
+
+  /* Corners */
+  --slightlyRounded: 2px;
 }
 
 body {
+  background: #f3eeee;
   margin: 0;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
 }
 
 button,
