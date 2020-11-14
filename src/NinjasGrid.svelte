@@ -20,7 +20,7 @@
     display: grid;
     gap: 1rem;
 
-    --cardMinWidth: 200px;
+    --cardMinWidth: 230px;
     grid-template-columns: repeat(auto-fit, minmax(var(--cardMinWidth), 1fr));
   }
 

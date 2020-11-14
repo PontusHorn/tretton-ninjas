@@ -1,5 +1,6 @@
 <script lang="ts">
   import Paper from './Paper.svelte';
+  import NinjaProfiles from './NinjaProfiles.svelte';
   import type { Ninja } from './types';
 
   export let ninja: Ninja;
@@ -16,7 +17,7 @@
     display: flex;
     height: 200px;
     justify-content: center;
-    margin: 0 0 1rem 0;
+    margin: 0;
     text-align: center;
   }
 
@@ -25,10 +26,47 @@
     max-width: 100%;
   }
 
-  h2 {
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name,
+  .office {
+    align-items: center;
+    display: flex;
+    flex: 1 0 auto;
     font-size: var(--baseFontSize);
     font-weight: bold;
     margin: 0;
+    min-height: 24px;
+  }
+
+  @media (min-width: 641px) {
+    figure {
+      margin-bottom: 1rem;
+    }
+
+    .details {
+      display: grid;
+      gap: 0 0.25rem;
+      grid-template-areas:
+        'name profiles'
+        'office office';
+      grid-template-columns: 1fr auto;
+    }
+
+    .name {
+      grid-area: name;
+    }
+
+    .office {
+      grid-area: office;
+    }
+
+    .profiles {
+      grid-area: profiles;
+    }
   }
 </style>
 
@@ -40,6 +78,12 @@
       {/if}
     </figure>
 
-    <h2>{ninja.name}</h2>
+    <div class="details">
+      <h2 class="name">{ninja.name}</h2>
+      <span class="office">Office: {ninja.office}</span>
+      <div class="profiles">
+        <NinjaProfiles {ninja} />
+      </div>
+    </div>
   </div>
 </Paper>
