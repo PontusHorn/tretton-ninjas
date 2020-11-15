@@ -74,7 +74,10 @@
   <div class="content">
     <figure>
       {#if ninja.imagePortraitUrl}
-        <img src={ninja.imagePortraitUrl} alt={`Portrait of ${ninja.name}`} />
+        <img
+          src={ninja.imagePortraitUrl}
+          alt={`Portrait of ${ninja.name}`}
+          loading="lazy" />
       {/if}
     </figure>
 
