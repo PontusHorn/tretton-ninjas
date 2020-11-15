@@ -2,6 +2,20 @@
 
 An interface to show the people working at tretton37. Built for the tretton37 JS code challenge.
 
+## Approach
+
+I've elected to build this project in Svelte, partly because I think it's a fantastic, lightweight framework that's pretty optimal for small apps like this, and partly because it's a good learning opportunity for me as I don't have very much experience with it in comparison to other similar frameworks. I've chosen the following requirements to focus on:
+
+- No UI framework used (such as Bootstrap, Ant) (1 pt)
+- Screen reader function (1 pt)
+- Responsive design, works on mobile and tablets (2 pt)
+- Sort by name and office (1 pt)
+- Filter by name and office (1 pt)
+- Works in Chrome, Firefox, Edge (1 pt)
+- End-to-end testing (with an existing framework) (2 pt)
+
+Three of these (screen reader function, responsive design, and cross-browser support) I chose mostly out of principle since I try to treat these as baseline requirements for things I build on the web. As for the rest of the requirements, I chose them because I feel they give a lot of value in relation to the effort of implementing them, in terms of both functionality and QA. My end goal was something that feels somewhat like a finished product. There are certainly more aspects that I think are lacking before it feels fully finished though, such as keyboard navigation, performance (e.g. the pagination/infinite scroll story), and a CI/CD pipeline.
+
 ## Installation
 
 First off, you will need to have [Node.js](https://nodejs.org) installed. Then install the dependencies...
