@@ -82,8 +82,8 @@
     </figure>
 
     <div class="details">
-      <h2 class="name">{ninja.name}</h2>
-      <span class="office">Office: {ninja.office}</span>
+      <h2 class="name" data-test="NinjaName">{ninja.name}</h2>
+      <span class="office" data-test="NinjaOffice">Office: {ninja.office}</span>
       <div class="profiles">
         <NinjaProfiles {ninja} />
       </div>

@@ -23,6 +23,14 @@ By default, the server will only respond to requests from localhost. To allow co
 
 If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
 
+## Running tests
+
+To run end-to-end tests, first start the development server as described above. Then start [Cypress](https://www.cypress.io/) in another terminal:
+
+```bash
+npm run cypress:open
+```
+
 ## Building and running in production mode
 
 To create an optimised version of the app:

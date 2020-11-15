@@ -77,9 +77,10 @@
 <main>
   <Paper>
     <div class="filters">
-      <label>Name: <input bind:value={nameFilter} /></label>
+      <label>Name:
+        <input bind:value={nameFilter} data-test="NameFilter" /></label>
       <label>Office:
-        <select bind:value={officeFilter}>
+        <select bind:value={officeFilter} data-test="OfficeFilter">
           <option value={undefined}>Any office</option>
           {#each Object.values(Office) as office}
             <option value={office}>{office}</option>
@@ -87,7 +88,7 @@
         </select>
       </label>
       <label>Sort by:
-        <select bind:value={sortMode}>
+        <select bind:value={sortMode} data-test="SortMode">
           {#each SORT_MODES as mode}
             <option value={mode.key}>{mode.name}</option>
           {/each}
