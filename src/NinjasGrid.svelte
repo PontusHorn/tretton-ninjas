@@ -13,32 +13,35 @@
     { key: 'office', name: 'Office' },
   ];
 
-  let ninjas: Ninja[] = [];
+  let ninjasPromise: Promise<Ninja[]> = new Promise(() => {});
   let nameFilter: string = '';
   let officeFilter: Office;
   let sortMode: SortMode = 'name';
 
-  onMount(async () => {
-    const response = await fetch(NINJAS_API_URL);
-    ninjas = await response.json();
+  onMount(() => {
+    ninjasPromise = fetch(NINJAS_API_URL).then((response) => response.json());
   });
 
-  $: filteredNinjas = ninjas
-    .filter((ninja) => {
-      if (
-        nameFilter &&
-        !ninja.name.toLocaleLowerCase().includes(nameFilter.toLocaleLowerCase())
-      ) {
-        return false;
-      }
+  $: ninjas = ninjasPromise.then((allNinjas) =>
+    allNinjas
+      .filter((ninja) => {
+        if (
+          nameFilter &&
+          !ninja.name
+            .toLocaleLowerCase()
+            .includes(nameFilter.toLocaleLowerCase())
+        ) {
+          return false;
+        }
 
-      if (officeFilter && ninja.office !== officeFilter) {
-        return false;
-      }
+        if (officeFilter && ninja.office !== officeFilter) {
+          return false;
+        }
 
-      return true;
-    })
-    .sort((a, b) => a[sortMode].localeCompare(b[sortMode]));
+        return true;
+      })
+      .sort((a, b) => a[sortMode].localeCompare(b[sortMode]))
+  );
 </script>
 
 <style>
@@ -93,11 +96,15 @@
     </div>
   </Paper>
 
-  <div class="grid">
-    {#each filteredNinjas as ninja (ninja.email)}
-      <NinjaCard {ninja} />
-    {:else}
-      <p>Loading...</p>
-    {/each}
-  </div>
+  {#await ninjas}
+    <div>Loading...</div>
+  {:then ninjas}
+    <div class="grid">
+      {#each ninjas as ninja (ninja.email)}
+        <NinjaCard {ninja} />
+      {:else}
+        <div>No matches :(</div>
+      {/each}
+    </div>
+  {/await}
 </main>
